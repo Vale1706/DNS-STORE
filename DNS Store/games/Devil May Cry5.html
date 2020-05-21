@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="gamesstyle.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+		<title>
+			DNS Store
+		</title>
+	</head>
+
+	<body>
+		<div class="top-container">
+			<img  height="250px" width="1900px" src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a href="../html/index.html">Home</a></li>
+				<li><a class="active" href="gameslist.html">Cosa Vendiamo</a></li>
+				<li><a href="../html/ChiSiamo.html">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				
+				<div class="topnav">
+					<form action="../php/scriptcart.php" style="float:left" name="info">
+						<input type="text" name="nomegioco" value="Devil May Cry 5" readonly></input>
+						<input type="text" name="prezzogioco" value="35.49€" size="3" readonly></input>
+						<input type="submit" id="submit-form" style="display: none;"></input>
+					</form>
+				</div>
+				
+				<li style="float:right">
+						<button class="open-button" onclick="openFormNavigate()" style="font-family: Montserrat; font-size:15px">Area Personale</button>
+				</li>
+				<li style="float:right">
+						<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+		<div class="content">
+			<table>
+				  <tr>
+					<td><div style="font-size: 40px" align="left"><b>Devil May Cry 5</b></div>
+						<div class="slideshow-container">
+							<div class="mySlides fade">
+								<div class="numbertext">1 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/2670/screenshot/devil-may-cry-5-wallpaper-1.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">2 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/2670/screenshot/devil-may-cry-5-wallpaper-2.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">3 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/2670/screenshot/devil-may-cry-5-wallpaper-3.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">4 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/2670/screenshot/devil-may-cry-5-wallpaper-4.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">5 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/2670/screenshot/devil-may-cry-5-wallpaper-5.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">6 / 6</div>
+								<img src="https://www.fastweb.it/var/storage_feeds/CMS/articoli/a23/a236a08b0e0e8b00cd560f8ffaa3c042/devil-may-cry-5-gamepaly.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							<div style="text-align:center">
+									<span class="dot" onclick="currentSlide(1)"></span>
+									<span class="dot" onclick="currentSlide(2)"></span>
+									<span class="dot" onclick="currentSlide(3)"></span>
+									<span class="dot" onclick="currentSlide(4)"></span>
+									<span class="dot" onclick="currentSlide(5)"></span>
+									<span class="dot" onclick="currentSlide(6)"></span>
+							</div>
+						</div>
+					</td>
+					<td>
+					<div class="container fadeInUp animated">
+						<table class="head" style="background-color: #161616; color: white">
+						<tr>
+							<td>
+								<img src="https://s1.gaming-cdn.com/images/products/2670/271x377/devil-may-cry-5-cover.jpg" style="margin:30px">
+							</td>
+						</tr>
+						<tr>
+							<td><b>Piattaforma: </b></td>
+						<tr>
+						</tr>
+							<td width="30px" height="10px"> <img height="20px" src="../img/windows.png"> PC</div></td>
+							<td></td>
+						<tr>
+							<td><b>Edizione: </b></td>
+						<tr>
+						</tr>
+							<td>Standard</td>
+						</tr>
+						<tr>
+							<td><b>Genere: </b></td>
+						<tr>
+						</tr>
+							<td>Azione Multiplayer Cooperazione Avventura Hack and Slash</td>
+						</tr>
+						<tr>
+							<td><div class="attivo" style="font-size: 40px">35.49€</div></td>
+						</tr>
+						<tr>
+							<td>
+								<label class="pricebutton" for="submit-form" tabindex="0">Aggiungi al carrello</label>
+							</td>
+						</tr>
+						</table>
+					</div>
+					</td>
+				  </tr>
+				  <tr>
+					<td>
+						<p class="desc">
+				
+Il diavolo che conosci ritorna in questa nuova entrata nella serie di azioni over-the-top disponibile sul PC. Preparati a diventare decisamente demoniaco con questa miscela unica di azione stilizzata ad alto numero di ottani e personaggi ultraterreni e originali per cui la serie è conosciuta. Il regista Hideaki Itsuno e il core team sono tornati per creare l'esperienza d'azione più folle, tecnicamente avanzata e assolutamente imperdibile di questa generazione!
+</br>
+</br>
+La minaccia del potere demoniaco è tornata a minacciare il mondo ancora una volta in Devil May Cry 5. L'invasione ha inizio quando i semi di un "albero demoniaco" si radicano nella città di Red Grave. Mentre questa incursione infernale comincia a conquistare la città, un giovane demone cacciatore Nero, arriva con il suo compagno Nico nel loro camper "Devil May Cry". Trovandosi senza l'uso del braccio destro, Nerone arresta Nico, un artista di armi autoproclamato, per progettare una varietà di armi meccaniche uniche Devil Breaker per dargli poteri extra per assumere demoni malvagi come il sangue che succhia Empusa e il gigante colosso nemico Golia.
+</br>
+</br>
+Azione stilizzata ad alto numero di ottani - Con tre personaggi giocabili ognuno con uno stile di gioco di combattimento radicalmente diverso alla moda mentre affrontano la città invasa da demoni
+Grafica rivoluzionaria - Sviluppata con il motore RE proprietario di Capcom, la serie continua a raggiungere nuovi traguardi in fedeltà con la grafica che utilizza disegni di carattere fotorealistici e straordinarie luci ed effetti ambientali.
+</br>
+Abbatti l'invasione demoniaca - Combatti contro boss epici in combattimenti adrenalinici attraverso la città di Red Grave, sotto il controllo di una colonna sonora davvero micidiale.
+</br>
+Cacciatore di demoni - Nero, uno dei principali protagonisti della serie e un giovane cacciatore di demoni che ha il sangue di Sparda, si dirige a Red Grave City per affrontare l'assalto infernale dei demoni, con le artigiane delle armi e il nuovo socio-criminale, Nico. A Nero si aggiunge anche l'elegante, leggendario cacciatore di demoni, Dante e il misterioso nuovo personaggio, V.<br></p>
+					</td>
+				  </tr>
+				</table>
+				<table class="requirements">
+				  <tr>
+					<th>Requisiti minimi</th>
+					<th>Requisiti raccomandati</th>
+				  </tr>
+				  <tr>
+					<td>
+						<b>Sistema Operativo:</b>WINDOWS® 7, 8.1, 10 (64-BIT Required)<br>
+						<b>Processore:</b> Intel® Core™ i5-4460, AMD FX™-6300, or better<br>
+						<b>Memoria:</b> 8 GB<br>
+						<b>Grafica:</b> NVIDIA® GeForce® GTX 760 or AMD Radeon™ R7 260x with 2GB Video RAM, or better<br>
+						<b>DirectX:</b> Versione 11<br>
+						<b>Spazio sul Disco:</b> 35 GB<br>
+					</td>
+					<td>
+						<b>Sistema Operativo:</b> WINDOWS® 7, 8.1, 10 (64-BIT Required)<br>
+						<b>Processore:</b>Intel® Core™ i7-3770, AMD FX™-9590, or better<br>
+						<b>Memoria:</b> 8 GB<br>
+						<b>Grafica:</b> NVIDIA® GeForce® GTX 1060 with 6GB VRAM, AMD Radeon™ RX 480 with 8GB VRAM, or better<br>
+						<b>DirectX:</b> Versione 11<br>
+						<b>Spazio sul Disco:</b>35 GB<br>
+					</td>
+				  </tr>
+				</table>
+		</div>
+		<script src="../js/script.js"></script>
+	</body>
+</html>

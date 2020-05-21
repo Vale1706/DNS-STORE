@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+
+		<title>
+			DNS Store
+		</title
+
+	</head>
+
+	<body onload="logged()">
+		<div class="top-container">
+			<img  src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a href="../html/indexlogged.html">Home</a></li>
+				<li><a href="../games/gameslist.html">Cosa Vendiamo</a></li>
+				<li><a href="../html/ChiSiamo.html">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				<li style="float:right">
+						<button id="areap" class="open-button active" style="font-family: Montserrat; font-size:15px; cursor: default">Area Personale</button>
+				</li>
+				<li style="float:right">
+				<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un fornitore</b></label>
+						<input type="checkbox" name="fornitore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un fornitore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+		<!--<div class="container fadeIn animated">-->
+		<div class="content">
+			<table>
+				<tr>
+					<td>
+						<button style="
+						  background-color: #4CAF50;
+						  border: none;
+						  color: white;
+						  padding: 15px 32px;
+						  text-align: center;
+						  text-decoration: none;
+						  display: inline-block;
+						  font-size: 16px;
+						  margin: 4px 2px;
+						  cursor: pointer;">Ricerca fornitori</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button onclick="Stampfornitore()" style="
+						  background-color: #4CAF50;
+						  border: none;
+						  color: white;
+						  padding: 15px 32px;
+						  text-align: center;
+						  text-decoration: none;
+						  display: inline-block;
+						  font-size: 16px;
+						  margin: 4px 2px;
+						  cursor: pointer;">Elenco fornitori</button>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button onclick="Logout()" style="
+						  background-color: #4CAF50;
+						  border: none;
+						  color: white;
+						  padding: 15px 32px;
+						  text-align: center;
+						  text-decoration: none;
+						  display: inline-block;
+						  font-size: 16px;
+						  margin: 4px 2px;
+						  cursor: pointer;">Logout</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	<script src="../js/script.js"></script>
+	<script>
+	function logged()
+	{
+		var nome = "<?php echo nome();
+
+		function nome()
+		{
+			$fh = fopen("../txt/loginfo.txt", "r");
+			if(!$fh) die ("Errore");
+			$email = fread($fh, 10000000);
+			fclose($fh);
+
+			$fp = fopen("../txt/test.txt", "r");
+			if(!$fp) die ("Errore");
+			$data = fread($fp, 10000000);
+
+			fclose($fp);
+			$arr = explode(";", $data);
+
+			$records = count($arr);
+			$records--;
+
+			$find = false;
+			for($i=0; $find!=true && $i<$records;$i=$i+3)
+			{
+				if($arr[$i]==$email)
+				{
+					$out=$arr[$i+2];
+					$find = true;
+				}
+			}
+
+			return $out;
+		} ?>";
+		alert ("Benvenuto, " + nome + ".");
+
+	}
+	</script>
+	</body>
+</html>

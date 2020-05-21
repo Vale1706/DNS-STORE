@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="gamesstyle.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+		<title>
+			DNS Store
+		</title>
+	</head>
+
+	<body>
+		<div class="top-container">
+			<img  height="250px" width="1900px" src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a href="../html/index.html">Home</a></li>
+				<li><a class="active" href="gameslist.html">Cosa Vendiamo</a></li>
+				<li><a href="../html/ChiSiamo.html">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				
+				<div class="topnav">
+					<form action="../php/scriptcart.php" style="float:left" name="info">
+						<input type="text" name="nomegioco" value="Call of Duty Black Ops III" readonly></input>
+						<input type="text" name="prezzogioco" value="9.58€" size="3" readonly></input>
+						<input type="submit" id="submit-form" style="display: none;"></input>
+					</form>
+				</div>
+				
+				<li style="float:right">
+						<button class="open-button" onclick="openFormNavigate()" style="font-family: Montserrat; font-size:15px">Area Personale</button>
+				</li>
+				<li style="float:right">
+						<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+		<div class="content">
+			<table>
+				  <tr>
+					<td><div style="font-size: 40px" align="left"><b>Black Ops III</b></div>
+						<div class="slideshow-container">
+							<div class="mySlides fade">
+								<div class="numbertext">1 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/1302/screenshot/call-of-duty-black-ops-iii-nuketown-wallpaper-1.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">2 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/1302/screenshot/call-of-duty-black-ops-iii-nuketown-wallpaper-2.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">3 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/1302/screenshot/call-of-duty-black-ops-iii-nuketown-wallpaper-3.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">4 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/1302/screenshot/call-of-duty-black-ops-iii-nuketown-wallpaper-4.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">5 / 6</div>
+								<img src="https://s1.gaming-cdn.com/images/products/1302/screenshot/call-of-duty-black-ops-iii-nuketown-wallpaper-5.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">6 / 6</div>
+								<img src="https://charlieintel.com/wp-content/uploads/2016/07/BO3-DLC3_Descent_Zombies-2-1021x580.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+							<br>
+
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							<div style="text-align:center">
+									<span class="dot" onclick="currentSlide(1)"></span>
+									<span class="dot" onclick="currentSlide(2)"></span>
+									<span class="dot" onclick="currentSlide(3)"></span>
+									<span class="dot" onclick="currentSlide(4)"></span>
+									<span class="dot" onclick="currentSlide(5)"></span>
+									<span class="dot" onclick="currentSlide(6)"></span>
+							</div>
+						</div>
+					</td>
+					<td>
+					<div class="container fadeInUp animated">
+						<table class="head" style="background-color: #161616; color: white">
+						<tr>
+							<td>
+								<img src="https://s1.gaming-cdn.com/images/products/1302/271x377/call-of-duty-black-ops-iii-nuketown-cover.jpg" style="margin:30px">
+							</td>
+						</tr>
+						<tr>
+							<td><b>Piattaforma: </b></td>
+						<tr>
+						</tr>
+							<td width="30px" height="10px"><img height="20px" src="../img/windows.png"> PC</div></td>
+							<td></td>
+						<tr>
+							<td><b>Edizione: </b></td>
+						<tr>
+						</tr>
+							<td>Standard</td>
+						</tr>
+						<tr>
+							<td><b>Genere: </b></td>
+						<tr>
+						</tr>
+							<td>Azione Avventura Multiplayer FPS Cooperazione</td>
+						</tr>
+						<tr>
+							<td><div class="attivo" style="font-size: 40px">9.58€</div></td>
+						</tr>
+						<tr>
+							<td>
+								<label class="pricebutton" for="submit-form" tabindex="0">Aggiungi al carrello</label>
+							</td>
+						</tr>
+						</table>
+					</div>
+					</td>
+				  </tr>
+				  <tr>
+					<td>
+						<p class="desc">
+Treyarch, sviluppatore dei due titoli più giocati nella storia di Call of Duty®, ritorna con Call of Duty®: Black Ops 3. Lo stimatissimo e premiatissimo studio ha creato il suo primo titolo della serie Black Ops per hardware di nuova generazione e per la prima volta con un ciclo di sviluppo triennale. Diamo il benvenuto a Call of Duty: Black Ops 3, un oscuro e drammatico futuro dal quale emerge una nuova tipologia di soldati Black Ops e dove il confine tra la nostra umanità e la nostra tecnologia si assottiglia sempre di più, in un mondo dove la guerra si combatte con la corsa alla robotica militare più avanzata.
+</br>
+</br>
+Call of Duty: Black Ops 3 combina tre modalità di gioco: Campagna, Multigiocatore and Zombi, offrendo ai fan il più ricco e il più ambizioso Call of Duty di sempre. La Campagna è stata progettata come esperienza cooperativa che può essere giocata fino a un massimo di 4 giocatori online oppure come un’emozionante avventura cinematografica in singolo. Il Multigiocatore sarà il più ricco, gratificante e coinvolgente nella storia del franchise fino a oggi, con nuove modalità di progressione, personalizzazione ed equipaggiamento per la battaglia. Zombi offre una nuovissima ed entusiasmante esperienza con una propria storia dedicata. Call of Duty: Black Ops 3 può essere giocato interamente online e per la prima volta ogni singola modalità di gioco prevede un proprio sistema di esperienza e progressione assolutamente unico. Il titolo inaugura un livello di innovazione senza precedenti, con ambientazioni strabilianti, armi e abilità mai viste prima e l’introduzione di un nuovo sistema di movimento più fluido che mai. Tutto questo è portato in vita da una tecnologia avanzatissima, creata appositamente per questo titolo, che include nuovi sistemi di animazione di intelligenza artificiale e un comparto grafico che ridefinirà le aspettative dei fan della pluri-acclamata serie di Call of Duty, con un sistema di illuminazione e di effetti visivi allo stato dell’arte.Call of Duty: Black Ops 3 porta i giocatori in un futuro dove le bio-tecnologie hanno permesso di creare una nuova tipologia di soldati Black Ops. I giocatori sono ora sempre connessi e sempre collegati nel corso della battaglia, sia al network dell’intelligence che ai propri compagni. In un mondo più diviso che mai, questa squadra d’elite consiste in uomini e donne che hanno potenziato le proprie capacità di combattimento per lottare con più velocità, più forza e più astuzia. In questa cruda e coinvolgente storia, ogni soldato deve visitare i luoghi più oscuri e prendere le decisioni più difficili.Treyarch alza il livello di Call of Duty in termini di esperienza di social gaming, offrendo una Campagna che permette di giocare in cooperativa fino a un massimo di quattro giocatori online, per mezzo della stessa infrastruttura di rete e degli stessi sistemi social che supportano le battaglie nelle amatissime modalità Multigiocatore e Zombi. Ideata per la cooperativa e per la ri-giocabilità, offrirà ai giocatori tutti i momenti epici e cinematografici che hanno reso celebre Call of Duty, così come un nuovo stile di gioco con elementi quali aree aperte e combattimenti in stile arena, pensati appositamente per offrire la possibilità di approcciarsi al gioco con strategie ogni volta diverse. Inoltre, ogni giocatore è ora completamente personalizzabile: dalle armi e l’equipaggiamento fino alle abilità e l’estetica, il tutto con sistemi di progressione completi e con un’armeria personalizzata dove fare sfoggio dei propri conseguimenti, offrendo così un’esperienza della campagna in costante evoluzione.Con Black Ops 3, Treyarch inaugura un nuovo sistema di movimento concatenato e basato sull’azione immediata, permettendo ai giocatori di muoversi fluidamente attraverso l’ambiente, usando salti, scivolate e balzi in molteplici combinazioni, il tutto mantenendo pieno e costante controllo della propria arma. Le mappe sono state ideate da zero appositamente per questo nuovo sistema di movimento, consentendo ai giocatori di vincere sia con i movimenti tradizionali, che di sperimentare nuove tattiche e manovre avanzate.
+</br>
+</br>
+Il Multigiocatore di Black Ops 3 introduce inoltre il nuovo sistema di personaggi Specialisti, che offre ai giocatori la possibilità di progredire e padroneggiare le abilità di combattimento e le armi di ciascuno di questi specifici personaggi. Con questa ulteriore aggiunta ai tradizionali sistemi di progressione dei livelli e delle armi, il Multigiocatore di Black Ops 3 fornisce ai giocatori ben tre diverse modalità di progressione.Nessun titolo di Treyarch sarebbe completo senza la firma inconfondibile data dall’offerta.
+</br>
+</br>
+Zombi – un’esperienza di gioco completa con la propria trama dedicata fuori da ogni schema. Black Ops 3 Zombi è la più ambiziosa e immersiva esperienza di questo genere vista fino a oggi in Call of Duty, con un sistema di progressione dell’esperienza dedicato che arricchisce ancora di più la profondità e la ri-giocabilità che i fan si aspettano da questa modalità di gioco.
+</br>
+</br>
+Call of Duty: Black Ops 3 offre l’esperienza di intrattenimento definitiva con 3-giochi-in-1.				<br></p>
+					</td>
+				  </tr>
+				</table>
+				<table class="requirements">
+				  <tr>
+					<th>Requisiti minimi</th>
+				  </tr>
+				  <tr>
+					<td>
+						<b>Sistema Operativo:</b> Windows 7 64-Bit / Windows 8 64-Bit / Windows 8.1 64-Bit<br>
+						<b>Processore:</b>Intel® Core™ i3-530 @ 2.93 GHz / AMD Phenom™ II X4 810 @ 2.60 GHz<br>
+						<b>Memoria:</b> 6 GB RAM<br>
+						<b>Grafica:</b> NVIDIA® GeForce® GTX 470 @ 1GB / ATI® Radeon™ HD 6970 @ 1GB<br>
+						<b>Spazio sul Disco:</b> 100 GB<br>
+						<b>DirectX:</b> Versione 11<br>
+						<b>Network:</b> Connessione internet a banda larga<br>
+						<b>Scheda Audio:</b> Scheda audio compatibile con DirectX®<br>
+					</td>
+				  </tr>
+				</table>
+		</div>
+		<script src="../js/script.js"></script>
+	</body>
+</html>

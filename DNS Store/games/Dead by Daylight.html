@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="gamesstyle.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+		<title>
+			DNS Store
+		</title>
+	</head>
+
+	<body>
+		<div class="top-container">
+			<img  height="250px" width="1900px" src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a href="../html/index.html">Home</a></li>
+				<li><a class="active" href="gameslist.html">Cosa Vendiamo</a></li>
+				<li><a href="../html/ChiSiamo.html">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				
+				<div class="topnav">
+					<form action="../php/scriptcart.php" style="float:left" name="info">
+						<input type="text" name="nomegioco" value="Dead by Daylight" readonly></input>
+						<input type="text" name="prezzogioco" value="8.19€" size="3" readonly></input>
+						<input type="submit" id="submit-form" style="display: none;"></input>
+					</form>
+				</div>
+				
+				<li style="float:right">
+						<button class="open-button" onclick="openFormNavigate()" style="font-family: Montserrat; font-size:15px">Area Personale</button>
+				</li>
+				<li style="float:right">
+						<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+		<div class="content">
+			<table>
+				  <tr>
+					<td><div style="font-size: 40px" align="left"><b>Dead by Daylight</b></div>
+						<div class="slideshow-container">
+							<div class="mySlides fade">
+								<div class="numbertext">1 / 6</div>
+								<img src="https://s3.gaming-cdn.com/images/products/1904/screenshot/dead-by-daylight-wallpaper-1.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">2 / 6</div>
+								<img src="https://s3.gaming-cdn.com/images/products/1904/screenshot/dead-by-daylight-wallpaper-2.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">3 / 6</div>
+								<img src="https://s3.gaming-cdn.com/images/products/1904/screenshot/dead-by-daylight-wallpaper-3.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">4 / 6</div>
+								<img src="https://s3.gaming-cdn.com/images/products/1904/screenshot/dead-by-daylight-wallpaper-4.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">5 / 6</div>
+								<img src="https://s3.gaming-cdn.com/images/products/1904/screenshot/dead-by-daylight-wallpaper-5.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">6 / 6</div>
+								<img src="https://images-eds-ssl.xboxlive.com/image?url=8Oaj9Ryq1G1_p3lLnXlsaZgGzAie6Mnu24_PawYuDYIoH77pJ.X5Z.MqQPibUVTcWY1mH8IjtAUoxuuWUuMaMjub3fWE8vv16Mk9pntqWHzMAAzPcWqwek69SA_BdhOf2yJVwfQIMVy5_CwAZuSRhhRlmiKw9GHSXrkqgEhutZ7Glk7H_rfAk0MPdINPsNfm69ypwBUaOixGgf9ViBuEs40Bcq0KJTCig6EYTJy4hLU-&h=1080&w=1920&format=jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							<div style="text-align:center">
+									<span class="dot" onclick="currentSlide(1)"></span>
+									<span class="dot" onclick="currentSlide(2)"></span>
+									<span class="dot" onclick="currentSlide(3)"></span>
+									<span class="dot" onclick="currentSlide(4)"></span>
+									<span class="dot" onclick="currentSlide(5)"></span>
+									<span class="dot" onclick="currentSlide(6)"></span>
+							</div>
+						</div>
+					</td>
+					<td>
+					<div class="container fadeInUp animated">
+						<table class="head" style="background-color: #161616; color: white">
+						<tr>
+							<td>
+								<img src="https://s3.gaming-cdn.com/images/products/1904/271x377/dead-by-daylight-cover.jpg" style="margin:30px">
+							</td>
+						</tr>
+						<tr>
+							<td><b>Piattaforma: </b></td>
+						<tr>
+						</tr>
+							<td width="30px" height="10px"> <img height="20px" src="../img/windows.png"> PC</div></td>
+							<td></td>
+						<tr>
+							<td><b>Edizione: </b></td>
+						<tr>
+						</tr>
+							<td>Standard</td>
+						</tr>
+						<tr>
+							<td><b>Genere: </b></td>
+						<tr>
+						</tr>
+							<td>Azione Multiplayer Cooperazione Strategia Horror </td>
+						</tr>
+						<tr>
+							<td><div class="attivo" style="font-size: 40px">8.19€</div></td>
+						</tr>
+						<tr>
+							<td>
+								<label class="pricebutton" for="submit-form" tabindex="0">Aggiungi al carrello</label>
+							</td>
+						</tr>
+						</table>
+					</div>
+					</td>
+				  </tr>
+				  <tr>
+					<td>
+						<p class="desc">
+			La morte non è una via di fuga.
+
+Dead by Daylight è un horror game multigiocatore (4 contro 1) in cui un giocatore assume il ruolo del feroce Killer e gli altri 4 giocano come Sopravvissuti, cercando di sfuggire al Killer ed evitando di farsi catturare, torturare e uccidere.
+</br>
+I Sopravvissuti giocano in terza persona e hanno il vantaggio di una migliore consapevolezza situazionale. Il Killer gioca in prima persona ed è più concentrato sulla sua preda.
+</br>
+L'obiettivo dei Sopravvissuti è di fuggire dal terreno di caccia senza essere catturati dal Killer, cosa che sembra più facile di quanto non lo sia in realtà, specialmente quando lo scenario cambia ogni volta che si gioca.
+</br>
+Ulteriori informazioni sul gioco sono disponibili su http://www.deadbydaylight.com•	Sopravvivere insieme… oppure no - I Sopravvissuti possono cooperare con gli altri oppure giocare da soli. Le tue probabilità di sopravvivenza possono variare a seconda del fatto che collabori con gli altri o giochi da solo. Sarai in grado di battere il Killer in astuzia e fuggire dal terreno di caccia?
+</br>
+•	Dove sono? - Ogni livello è generato proceduralmente, così non potrai mai sapere cosa ti aspetta. Punti di riapparizione random non ti faranno sentire mai al sicuro, perché l'ambientazione e il pericolo ad essa associato cambiano ogni volta che giochi.
+</br>
+</br>
+•	Un banchetto per i Killer - Dead by Daylight trae ispirazione da tutti gli angoli del mondo dell'orrore. Come Killer potrai giocare nei panni di qualunque cosa tu voglia, da un potente Affettatore a terrificati entità paranormali. Familiarizza con i tuoi terreni di caccia e impara a padroneggiare i poteri speciali di ciascun Killer per poter dare la caccia, catturare e sacrificare le tue vittime.
+</br>
+</br>
+•	Sempre più a fondo - Ogni Killer e ogni Sopravvissuto ha il proprio sistema di progressione in profondità e una varietà di elementi sbloccabili che possono essere personalizzati per adattarsi alla sua strategia personale. Esperienza, abilità e consapevolezza dell'ambiente sono la chiave per poter dare la caccia o superare il killer in astuzia.
+</br>
+</br>
+•	Gente vera, paura vera - I livelli procedurali e le reazioni umane al puro orrore fanno di ogni sessione di gioco uno scenario inaspettato. Non sarai mai in grado di dire come andrà a finire. L'atmosfera, la musica e gli scenari agghiaccianti si combinano in un'esperienza terrificante. Avendo tempo a sufficienza, potresti addirittura scoprire cosa si nasconde nella nebbia.<br></p>
+					</td>
+				  </tr>
+				</table>
+				<table class="requirements">
+				  <tr>
+					<th>Requisiti minimi</th>
+					<th>Requisiti raccomandati</th>
+				  </tr>
+				  <tr>
+					<td>
+						<b>Sistema Operativo:</b>64-bit Operating Systems (Windows 7, Windows 8.1)<br>
+						<b>Processore:</b> Intel Core i3-4170 or AMD FX-8120<br>
+						<b>Memoria:</b> 8 GB<br>
+						<b>Grafica:</b>DX11 Compatible GeForce GTX 460 1GB or AMD HD 6850 1GB<br>
+						<b>DirectX:</b> Versione 11<br>
+						<b>Network:</b> Connessione internet a banda larga<br>
+						<b>Spazio sul Disco:</b>25 GB<br>
+						<b>Scheda Audio:</b>DX11 compatible<br>
+					</td>
+					<td>
+						<b>Sistema Operativo:</b>64-bit Operating Systems (Windows 7, Windows 8.1 or above)<br>
+						<b>Processore:</b>Intel Core i3-4170 or AMD FX-8300 or higher<br>
+						<b>Memoria:</b> 8 GB<br>
+						<b>Grafica:</b> DX11 Compatible GeForce 760 or AMD HD 8800 or higher with 4GB of RAM<br>
+						<b>DirectX:</b> Versione 11<br>
+						<b>Network:</b> Connessione internet a banda larga<br>
+						<b>Spazio sul Disco:</b> 25 GB<br>
+						<b>Scheda Audio:</b>DX11 compatible<br>
+					</td>
+				  </tr>
+				</table>
+		</div>
+		<script src="../js/script.js"></script>
+	</body>
+</html>

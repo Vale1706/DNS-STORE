@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="gamesstyle.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+		<title>
+			DNS Store
+		</title>
+	</head>
+
+	<body>
+		<div class="top-container">
+			<img  height="250px" width="1900px" src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a href="../html/index.html">Home</a></li>
+				<li><a class="active" href="gameslist.html">Cosa Vendiamo</a></li>
+				<li><a href="../html/ChiSiamo.html">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				
+				<div class="topnav">
+					<form action="../php/scriptcart.php" style="float:left" name="info">
+						<input type="text" name="nomegioco" value="Gears of War 4" readonly></input>
+						<input type="text" name="prezzogioco" value="4.89€" size="3" readonly></input>
+						<input type="submit" id="submit-form" style="display: none;"></input>
+					</form>
+				</div>
+				
+				<li style="float:right">
+						<button class="open-button" onclick="openFormNavigate()" style="font-family: Montserrat; font-size:15px">Area Personale</button>
+				</li>
+				<li style="float:right">
+						<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+		<div class="content">
+			<table>
+				  <tr>
+					<td><div style="font-size: 40px" align="left"><b>Gears of War 4</b></div>
+						<div class="slideshow-container">
+							<div class="mySlides fade">
+								<div class="numbertext">1 / 6</div>
+								<img src="https://s2.gaming-cdn.com/images/products/1408/screenshot/gears-of-war-4-pc-xbox-one-wallpaper-1.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">2 / 6</div>
+								<img src="https://s2.gaming-cdn.com/images/products/1408/screenshot/gears-of-war-4-pc-xbox-one-wallpaper-2.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">3 / 6</div>
+								<img src="https://s2.gaming-cdn.com/images/products/1408/screenshot/gears-of-war-4-pc-xbox-one-wallpaper-3.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">4 / 6</div>
+								<img src="https://s2.gaming-cdn.com/images/products/1408/screenshot/gears-of-war-4-pc-xbox-one-wallpaper-4.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">5 / 6</div>
+								<img src="https://s2.gaming-cdn.com/images/products/1408/screenshot/gears-of-war-4-pc-xbox-one-wallpaper-5.jpg" width="800px">
+								<div class="text"></div>
+							</div>
+
+							<div class="mySlides fade">
+								<div class="numbertext">6 / 6</div>
+								<img src="http://assets1.ignimgs.com/2017/06/02/gears4-1496429924736_1280w.png" width="800px">
+								<div class="text"></div>
+							</div>
+							<br>
+
+							<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+							<a class="next" onclick="plusSlides(1)">&#10095;</a>
+							<div style="text-align:center">
+									<span class="dot" onclick="currentSlide(1)"></span>
+									<span class="dot" onclick="currentSlide(2)"></span>
+									<span class="dot" onclick="currentSlide(3)"></span>
+									<span class="dot" onclick="currentSlide(4)"></span>
+									<span class="dot" onclick="currentSlide(5)"></span>
+									<span class="dot" onclick="currentSlide(6)"></span>
+							</div>
+						</div>
+					</td>
+					<td>
+					<div class="container fadeInUp animated">
+						<table class="head" style="background-color: #161616; color: white">
+						<tr>
+							<td>
+								<img src="https://s2.gaming-cdn.com/images/products/1408/271x377/gears-of-war-4-pc-xbox-one-cover.jpg" style="margin:30px">
+							</td>
+						</tr>
+						<tr>
+							<td><b>Piattaforma: </b></td>
+						<tr>
+						</tr>
+							<td width="30px" height="10px"> <!--<div class="attivo">--> <img height="20px" src="../img/windows.png"> PC</div></td>
+							<td></td>
+						<tr>
+							<td><b>Edizione: </b></td>
+						<tr>
+						</tr>
+							<td>Standard</td>
+						</tr>
+						<tr>
+							<td><b>Genere: </b></td>
+						<tr>
+						</tr>
+							<td>Action Multiplayer Cooperazione</td>
+						</tr>
+						<tr>
+							<td><div class="attivo" style="font-size: 40px">4.89€</div></td>
+						</tr>
+						<tr>
+							<td>
+								<label class="pricebutton" for="submit-form" tabindex="0">Aggiungi al carrello</label>
+							</td>
+						</tr>
+						</table>
+					</div>
+					</td>
+				  </tr>
+				  <tr>
+					<td>
+						<p class="desc">
+						Inizia una nuova saga per una delle serie di videogiochi più acclamate della storia. Dopo esser scampati per un pelo a un attacco al loro villaggio, JD Fenix e i suoi amici, Kait e Del, dovranno salvare i loro cari e scoprire l'origine di un nuovo, mostruoso nemico.
+				<br></p>
+					</td>
+				  </tr>
+				</table>
+				<table class="requirements">
+				  <tr>
+					<th>Requisiti minimi</th>
+					<th>Requisiti raccomandati</th>
+				  </tr>
+				  <tr>
+					<td>
+						<b>Sistema Operativo:</b> Win 10 64<br>
+						<b>Processore:</b>Core i5-3470 3.2GHz / FX-6300<br>
+						<b>Memoria:</b> 8 GB<br>
+						<b>Grafica:</b> GeForce GTX 750 Ti / Radeon HD 7850<br>
+						<b>Spazio sul Disco:</b> 80 GB<br>
+					</td>
+					<td>
+						<b>Sistema Operativo:</b> Win 10 64<br>
+						<b>Processore:</b> Core i5-4690 3.5GHz / FX-8350<br>
+						<b>Memoria:</b> 8 GB<br>
+						<b>Grafica:</b>GeForce GTX 970 4GB / Radeon RX 480 4GB<br>
+						<b>Spazio sul Disco:</b>80 GB<br>
+					</td>
+				  </tr>
+				</table>
+		</div>
+		<script src="../js/script.js"></script>
+	</body>
+</html>

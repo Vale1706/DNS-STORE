@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="stylesheet" type="text/css" href="gamesstyle.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+
+		<style>
+
+		</style>
+		<title>
+			DNS Store
+		</title>
+	</head>
+
+	<body>
+		<div class="top-container">
+			<img  height="250px" width="1900px" src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a href="../html/index.html">Home</a></li>
+				<li><a class="active" style="cursor: default">Cosa Vendiamo</a></li>
+				<li><a href="../html/ChiSiamo.html">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				<li style="float:right">
+						<button class="open-button" onclick="openFormNavigate()" style="font-family: Montserrat; font-size:15px">Area Personale</button>
+				</li>
+				<li style="float:right">
+				<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+		<div class="content"><div class="container fadeInUp animated">
+			<table class="gameslist">
+				<tr>
+					<td><div style="font-size:25px">
+					<ul style="width: 31.3%">
+						<li><a style="color: white; cursor: default" class="active">1</a></li>
+						<li><a href="gamelist2.html" style="color: white">2</a></li>
+					</ul>
+					</div></td>
+				</tr>
+				<tr height="50px">
+				</tr>
+				<tr>
+					<td align="center"><a class="game" href="Dirt Rally.html">Dirt Rally</a></td>
+					<td align="center"><a class="game" href="Anthem.html">Anthem</a></th></td>
+					<td align="center"><a class="game" href="GTAV.html">Grand Theft Auto V</a></td>
+				</tr>	
+				<tr>
+					<td width="10%" align="center"><a href="Dirt Rally.html"><img src="https://s3.gaming-cdn.com/images/products/3188/271x377/dirt-rally-20-cover.jpg" height="300px"/></a></td>
+					<td width="10%" align="center"><a href="Anthem.html"><img src="https://s2.gaming-cdn.com/images/products/2137/271x377/anthem-cover.jpg" height="300px"/></a></th></td>
+					<td width="10%" align="center"><a href="GTAV.html"><img src="https://s1.gaming-cdn.com/images/products/186/271x377/grand-theft-auto-v-cover.jpg" height="300px"/></a></td>
+				</tr>
+				<tr height="40px">
+				</tr>
+				<tr>
+				
+					<td align="center"><a class="game" href="Gears of War 4.html" align="center">Gears of War 4</a></td>
+					<td align="center"><a class="game" href="Sea of Thieves.html" align="center">Resident Evil 2</a></td>
+					<td align="center"><a class="game" href="Resident Evil 2 Biohazard.html" align="center">Sea of Thieves</a></td>
+				</tr>	
+				<tr>
+					<td width="10%" align="center"><a href="Gears of War 4.html"><img src="https://s2.gaming-cdn.com/images/products/1408/271x377/gears-of-war-4-pc-xbox-one-cover.jpg" height="300px"/></a></td>
+					<td width="10%" align="center"><a href="Resident Evil 2 Biohazard.html"><img src="https://s1.gaming-cdn.com/images/products/2709/271x377/resident-evil-2-biohazard-re2-cover.jpg" height="300px"/></a></td>
+					<td width="10%" align="center"><a href="Sea of Thieves.html"><img src="https://s2.gaming-cdn.com/images/products/967/271x377/sea-of-thieves-pc-xbox-one-cover.jpg" height="300px"/></a></td>
+				</tr>
+				<tr height="40px">			
+				</tr>
+				<tr>
+					<td align="center"><a class="game" href="Black Ops III + Nuketown.html">Call of Duty: Black Ops III</a></td>
+					<td align="center"><a class="game" href="Payday 2.html">Payday 2</a></td>
+					<td align="center"><a class="game" href="Borderlands 2.html">Borderlands 2</a></td>
+				</tr>
+				<tr>
+					<td width="10%" align="center"><a href="Black Ops III + Nuketown.html"><img src="https://s1.gaming-cdn.com/images/products/1302/271x377/call-of-duty-black-ops-iii-nuketown-cover.jpg" height="300px"/></a></td>
+					<td width="10%" align="center"><a href="Payday 2.html"><img src="https://s2.gaming-cdn.com/images/products/223/271x377/payday-2-cover.jpg" height="300px"/></a></td>
+					<td width="10%" align="center"><a href="Borderlands 2.html"><img src="https://s2.gaming-cdn.com/images/products/319/271x377/borderlands-2-game-of-the-year-edition-cover.jpg" height="300px"/></a></td>			
+				</tr>
+				<tr height="40px">			
+				</tr>
+				<tr>
+				
+					<td align="center"><a class="game" href="Forza Horizon 4.html" align="center">Forza Horizon 4</a></td>
+					<td align="center"><a class="game" href="Fifa19.html" align="center">Fifa19</a></td>
+					<td align="center"><a class="game" href="Euro Truck Simulator 2.html" align="center">Euro Truck Simulator 2</a></td>
+				</tr>	
+				<tr>
+					<td width="10%" align="center"><a href="Forza Horizon 4.html"><img src="https://s1.gaming-cdn.com/images/products/2682/271x377/forza-horizon-4-pc-xbox-one-cover.jpg" height="300px"/></a></td>
+					<td width="10%" align="center"><a href="Fifa19.html"><img src="https://s2.gaming-cdn.com/images/products/2665/271x377/fifa-19-cover.jpg" height="300px"/></a></td>
+					<td width="10%" align="center"><a href="Euro Truck Simulator 2.html"><img src="https://s1.gaming-cdn.com/images/products/309/271x377/euro-truck-simulator-2-cover.jpg" height="300px"/></a></td>
+			</table>
+		</div></div>
+		<script src="../js/script.js"></script>
+	</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+
+		<title>
+			DNS Store
+		</title>
+	</head>
+
+	<body link="red" alink="red" vlink="red">
+		<a name="primo"></a>
+		<div class="top-container">
+			<img  height="250px" width="1900px" src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="../games/gameslist.html">Cosa Vendiamo</a></li>
+				<li><a class="active" style="cursor: default">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				<li style="float:right">
+						<button class="open-button" onclick="openFormNavigate()" style="font-family: Montserrat; font-size:15px">Area Personale</button>
+				</li>
+				<li style="float:right">
+				<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un venditore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+			<div class="content"><div class="container zoomInUp animated">
+
+				<br><br>
+				<div class="TitoloChisiamo"> CHI SIAMO? </div>
+				<br><br>
+
+				<div class="desc">
+				<br> <b>Definitely Not a Scam Store </b> (DNS Store) nasce a <b>Rimini</b> nel 2019, e ancora oggi rappresenta <b>il più grande sito</b> di vendita online italiano impegnato nel commercio di videogiochi per PC. <br>
+				<br> Il sito venne creato da 4 ragazzi e una ragazza della scuola riminese <b>"ITTS L.Da Vinci-O.Belluzzi"</b> presi dalla voglia di unirsi con lo scopo cambiare il web <b>una volta per tutte.</b> <br><br>
+
+				Unico nel panorama nazionale per il <b>rapporto</b> tra la qualità dei suoi prodotti e il prezzo fornito al cliente, è riconosciuto a livello mondiale come <b>uno dei migliori luoghi ecommerce nel settore gaming</b>, in qualunque genere esistente.<br><br>
+
+				La caratteristica distintiva del lavoro di questo sito è nella meticolosità con cui <b>ogni singolo aspetto</b> del prodotto viene mantenuto e gestito prima di essere venduto all'untente, dalla ricerca del miglior <b>prezzo accessibile</b> a tutti
+				al <b>continuo rifornimento</b> di chiavi digitali per far si che non si esauriscano in nessun caso. <br><br>
+				L’obiettivo principale è restituire al videogiocatore, neofita o esperto che sia, <b>il gioco che desidera al miglior prezzo possibile</b>, senza sovrapprezzare niente con tasse inutili come accade svariati siti di Acquisto chiavi.<br><br>
+
+				www.DNS-Store.it è un ecommerce <b>gestito dai giovani per i giovani</b>.<br> Troverete tutto quello di cui avete bisogno per passare le giornate con i vostri giochi preferiti.<br><br>
+				Sin dalla sua nascita, il negozio ha creato il suo ecommerce personale offrendo prezzi più <b>competitivi e accessivi possibili</b>, oltre ad una grafica nuova e pensata interamente al cliente.<br><br>
+				Avrete a disposizione prodotti di <b>ogni genere</b> ordinati secondo categoria.<br><br><br><br><br><br><br>
+
+				</div>
+
+
+				<div class="TitoloChisiamo"> TEAM SVILUPPATORI </div>
+				 <br><br><br>
+
+
+				<table class="TableChiSiamo">
+					<tr>
+						<td><a  href="https://www.instagram.com/_ezahhh_/?hl=it" target="_blank"><img height="240px" width="240px" src="../img/facce sexy/Righi1.png"></a></td>
+						<td><a  href="https://www.instagram.com/yang_xng/?hl=it" target="_blank"><img height="240px" width="240px" src="../img/facce sexy/xiang1.png"></a></td>
+						<td><a  href="https://www.instagram.com/nicolamontanari_brt/?hl=it" target="_blank"><img height="240px" width="240px" src="../img/facce sexy/Nicola1.png"></a></td>
+						<td><a  href="https://www.instagram.com/matteosutera/?hl=it" target="_blank"><img height="240px" width="240px" src="../img/facce sexy/Sutera.png"></a></td>
+						<td><a  href="https://www.instagram.com/valeria__verde/?hl=it" target="_blank"><img height="240px" width="240px" src="../img/facce sexy/Valeria1.png"></a></td>
+					</tr>
+					<tr>
+						<td>Samuele Righi</td>
+						<td>Yang Xiang</td>
+						<td>Nicola Montanari</td>
+						<td>Matteo Sutera</td>
+						<td>Valeria Verde</td>
+					</tr>
+				</table>
+				<br><br><br>
+				<br><br><br>
+
+
+
+
+			</div></div>
+
+
+		<div class="BotBanner">	<br> <a href="#primo" style="text-decoration: none; color: #4CAF50">Torna in alto</a> <br><br><br>	</div>
+
+
+	<script src="../js/script.js"	></script>
+
+	</body>
+</html>

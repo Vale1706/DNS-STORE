@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="../css/animate.css" >
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<link rel="icon" href="../img/icona.png" type="image/png" />
+
+		<title>
+			DNS Store
+		</title
+
+	</head>
+
+	<body onload="logged()">
+		<div class="top-container">
+			<img  src="../img/prova2banner3.0.png">
+		</div>
+
+		<div class="header" id="myHeader">
+			<ul>
+				<li><a class="active" style="cursor: default">Home</a></li>
+				<li><a href="../games/gameslist.html">Cosa Vendiamo</a></li>
+				<li><a href="../html/ChiSiamo.html">Chi siamo</a></li>
+				<div class="topnav"> <input type="text" style="float:left" placeholder="Cerca i giochi..."> </div>
+				<li style="float:right">
+						<button id="areap" class="open-button" style="font-family: Montserrat; font-size:15px" onclick="Areapersonalefornitore()">Area Personale</button>
+				</li>
+				<li style="float:right">
+				<button class="open-cart" onclick="location.href='../php/scriptstampcart.php'" style="font-family: Montserrat; font-size:15px"><img src="../img/shoppingcart.png" height="42" width="42"></button>
+				</li>
+			</ul>
+
+			<div class="form-popup" id="myForm">
+				<form action="../php/scriptlog.php" class="form-container">
+					<table>
+						<tr>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+							<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+						</tr>
+					</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<button type="submit" class="btn">Login</button>
+						<button type="button" class="btn cancel" onclick="closeFormLOG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupREG" id="myFormREG">
+				<form action="../php/scriptreg.php" class="form-containerREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login" onclick="openLog()"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="nome" required>
+
+						<label><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label><b>Password</b></label>
+						<input onkeyup='check();' id="pass" type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label><b>Conferma Password</b></label>
+						<input onkeyup='check();' id="confermapass" class="errorepass" type="password" placeholder="Inserisci Password" name="confermapass" required>
+						<span id='message'></span><br><br>
+
+						<label><b>Sono un fornitore</b></label>
+						<input type="checkbox" name="fornitore"><br><br>
+
+						<button id="enabledreg" type="submit" value="submit" class="btn">Registrati</button>
+						<button id="disabledreg" type="button" value="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel" onclick="closeFormREG()">Chiudi</button>
+				</form>
+			</div>
+
+			<div class="form-popupdownLOG" id="myFormdown">
+				<form class="form-containerdown">
+						<table>
+							<tr>
+								<td style="color: #4CAF50; font-size: 18px"><h1>Login</h1></td>
+								<td><button type="button" class="open-registration" onclick="openReg()"><h1>Registrati</h1></button></td>
+							</tr>
+						</table>
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="psw" required>
+
+						<button type="submit" class="btn"></button>
+						<button type="button" class="btn cancel" onclick="closeForm()"></button>
+				</form>
+			</div>
+			<div class="form-popupdownREG" id="myFormdownREG">
+				<form class="form-containerdownREG">
+					<table>
+						<tr>
+							<td><button type="button" class="open-login"><h1>Login</h1></button></td>
+							<td style="color: #4CAF50; font-size: 18px"><h1>Registrati</h1></td>
+						</tr>
+					</table>
+						<label for="nome"><b>Nome</b></label>
+						<input type="text" placeholder="Inserisci Nome" name="name" required>
+
+						<label for="cognome"><b>Cognome</b></label>
+						<input type="text" placeholder="Inserisci Cognome" name="cognome" required>
+
+						<label for="email"><b>Email</b></label>
+						<input type="text" placeholder="Inserisci Email" name="email" required>
+
+						<label for="psw"><b>Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="pass" required>
+
+						<label for="psw"><b>Conferma Password</b></label>
+						<input type="password" placeholder="Inserisci Password" name="confermapass" required>
+
+						<label for="tipo"><b>Sono un fornitore</b></label>
+						<input type="checkbox" name="venditore">
+
+						<button type="submit" class="btn">Registrati</button>
+						<button type="button" class="btn cancel">Chiudi</button>
+				</form>
+			</div>
+		</div>
+		<!--<div class="container fadeIn animated">-->
+		<div class="content">
+			<div class="slideshow-container">
+				<div class="mySlides fade">
+					<div class="numbertext">1 / 8</div>
+					<img src="../img/homeslideshow/img1.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">2 / 8</div>
+					<img src="../img/homeslideshow/img2.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">3 / 8</div>
+					<img src="../img/homeslideshow/img3.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">4 / 8</div>
+					<img src="../img/homeslideshow/img4.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">5 / 8</div>
+					<img src="../img/homeslideshow/img5.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">6 / 8</div>
+					<img src="../img/homeslideshow/img6.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">7 / 8</div>
+					<img src="../img/homeslideshow/img7.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+
+				<div class="mySlides fade">
+					<div class="numbertext">8 / 8</div>
+					<img src="../img/homeslideshow/img8.jpg" style="width:100%">
+					<div class="text"></div>
+				</div>
+				<br>
+
+				<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+				<a class="next" onclick="plusSlides(1)">&#10095;</a>
+				<div style="text-align:center">
+						<span class="dot" onclick="currentSlide(1)"></span>
+						<span class="dot" onclick="currentSlide(2)"></span>
+						<span class="dot" onclick="currentSlide(3)"></span>
+						<span class="dot" onclick="currentSlide(4)"></span>
+						<span class="dot" onclick="currentSlide(5)"></span>
+						<span class="dot" onclick="currentSlide(6)"></span>
+						<span class="dot" onclick="currentSlide(7)"></span>
+						<span class="dot" onclick="currentSlide(8)"></span>
+				</div>
+			</div>
+		
+		
+			<br><br><br><br><br><br><br><br><br><br>
+			
+			
+			
+			
+				<div class="Titolo"><B>ULTIMISSIME OFFERTE!</B> </div>
+		
+				<br><br><br>
+		
+		
+			
+			<table>
+				<tr>
+				<td>
+			
+			
+				<table align="left">
+					<tr align="center">
+						<td><b>Dirt Rally 2.0</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="../games/dirt rally/head.jpg"</td>
+					</tr>
+					<tr align="center">
+						<td><h2>43.99€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/Dirt Rally.html';" style="">Acquista</button></td>
+					</tr>
+				</table>
+				
+				</td>
+				<td>
+				
+				<table align="center" style="margin-left: 40px" >
+					<tr align="center">
+						<td><b>PayDay 2</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="https://s2.gaming-cdn.com/images/products/223/271x377/payday-2-cover.jpg" </td>
+					</tr>
+					<tr align="center">
+						<td><h2>4.81€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/Payday 2.html';" style="">Acquista</button></td>
+					</tr>
+				</table>
+				
+				</td>
+				<td>
+				
+				<table style="margin-left: 40px" >
+					<tr align="center">
+						<td><b>Anthem</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="../games/anthem/head.jpg" </td>
+					</tr>
+					<tr align="center">
+						<td><h2>39.90€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/Anthem.html';" style="">Acquista</button></td>
+				
+					</tr>
+				</table>
+				
+				</td>
+				<td>
+				
+				
+				<table style="margin-left: 40px" >
+					<tr align="center">
+						<td><b>Gears Of War 4</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="https://s2.gaming-cdn.com/images/products/1408/271x377/gears-of-war-4-pc-xbox-one-cover.jpg" </td>
+					</tr>
+					<tr align="center">
+						<td><h2>4.89€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/Gears of War 4.html';" style="">Acquista</button></td>
+				
+					</tr>
+				</table>
+				
+				
+				</td>
+				</tr>
+			</table>
+			<br><br><br><br>
+			<br>
+			<table>
+				<tr>
+				<td>
+				
+				
+				<table align="left">
+					<tr align="center">
+						<td><b>Resident Evil 2</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="https://s1.gaming-cdn.com/images/products/2709/271x377/resident-evil-2-biohazard-re2-cover.jpg"></td>
+					</tr>
+					<tr align="center">
+						<td><h2>27.87€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/resident evil 2 Biohazard.html';" style="">Acquista</button></td>
+					</tr>
+				</table>
+				
+				</td>
+				<td>
+				
+				<table align="center" style="margin-left: 40px" >
+					<tr align="center">
+						<td><b>Sea of Thieves</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="https://s2.gaming-cdn.com/images/products/967/271x377/sea-of-thieves-pc-xbox-one-cover.jpg"></td>
+					</tr>
+					<tr align="center">
+						<td><h2>39.28€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/Sea of Thieves.html';" style="">Acquista</button></td>
+					</tr>
+				</table>
+				
+				</td>
+				<td>
+				
+				<table style="margin-left: 40px" >
+					<tr align="center">
+						<td><b>Call of Duty: Black Ops |||</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="https://s1.gaming-cdn.com/images/products/1302/271x377/call-of-duty-black-ops-iii-nuketown-cover.jpg"> > </td>
+					</tr>
+					<tr align="center">
+						<td><h2>9.58€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/Black Ops III + Nuketown.html';" style="">Acquista</button></td>
+				
+					</tr>
+				</table>
+				
+				</td>
+				<td>
+				
+				
+				<table style="margin-left: 40px" >
+					<tr align="center">
+						<td><b>Borderlands 2</b></td>
+					</tr>
+					<tr align="center">
+						<td><img width="50%" src="https://s2.gaming-cdn.com/images/products/319/271x377/borderlands-2-game-of-the-year-edition-cover.jpg"> </td>
+					</tr>
+					<tr align="center">
+						<td><h2>5.39€</h2></td>
+					</tr>
+					<tr align="center">
+						<td><button class="pricebutton" OnClick="window.location.href ='../games/Borderlands 2.html';" style="">Acquista</button></td>
+				
+					</tr>
+				</table>
+				
+				
+				</td>
+			
+				
+			</table>
+			<br><br><br>
+					<div class="Titolo">CERCHI ALTRI GIOCHI? PREMI IL TASTO "Cosa Vendiamo" IN ALTO A SINISTRA!</div>
+			<br><br><br>
+	
+	
+		
+		</div>
+		
+		
+	<script src="../js/scriptfornitore.js"></script>
+	<script src="../js/script.js"></script>
+	<script>
+	function logged()
+	{
+		var nome = "<?php echo nome();
+
+		function nome()
+		{
+			$fh = fopen("../txt/loginfo.txt", "r");
+			if(!$fh) die ("Errore");
+			$email = fread($fh, 10000000);
+			fclose($fh);
+
+			$fp = fopen("../txt/test.txt", "r");
+			if(!$fp) die ("Errore");
+			$data = fread($fp, 10000000);
+
+			fclose($fp);
+			$arr = explode(";", $data);
+
+			$records = count($arr);
+			$records--;
+
+			$find = false;
+			for($i=0; $find!=true && $i<$records;$i=$i+3)
+			{
+				if($arr[$i]==$email)
+				{
+					$out=$arr[$i+2];
+					$find = true;
+				}
+			}
+
+			return $out;
+		} ?>";
+		alert ("Benvenuto, fornitore " + nome + ".");
+
+	}
+	</script>
+	</body>
+</html>
